@@ -19,17 +19,36 @@ document.addEventListener('DOMContentLoaded', () =>{
             const dogBreedsList = document.getElementById('dog-breeds');
 
             for (const key in json.message ){
+                
                 const dogBreedListItem = document.createElement('li');
                 dogBreedListItem.addEventListener('click', (e) => {
                     e.target.style.color = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-                })
-                dogBreedListItem.innerHTML = key;
 
-                dogBreedsList.appendChild(dogBreedListItem);
+                });
+                dogBreedListItem.innerHTML = key;
+                dogBreedsList.appendChild(dogBreedListItem);    
 
             };
-        })
+        });
 
-       
+        const dogBreedsList = document.getElementById('dog-breeds');
 
-})
+        const letterDropdown = document.getElementById('breed-dropdown');
+        letterDropdown.addEventListener('change', (e) => {
+            let selectLetter = e.target.value;
+            let listItems = dogBreedsList.querySelectorAll('li');
+            
+            listItems.forEach(function(listItem){
+
+                let breedName = listItem.innerText;
+
+                if(breedName.charAt(0) == selectLetter){
+                    listItem.removeAttribute('hidden');
+                } else {
+                    listItem.setAttribute('hidden', true);
+                }
+            });
+
+        });
+
+});
