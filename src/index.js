@@ -20,7 +20,9 @@ document.addEventListener('DOMContentLoaded', () =>{
 
             for (const key in json.message ){
                 const dogBreedListItem = document.createElement('li');
-
+                dogBreedListItem.addEventListener('click', (e) => {
+                    e.target.style.color = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+                })
                 dogBreedListItem.innerHTML = key;
 
                 dogBreedsList.appendChild(dogBreedListItem);
