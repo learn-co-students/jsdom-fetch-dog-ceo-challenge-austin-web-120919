@@ -12,6 +12,21 @@ document.addEventListener('DOMContentLoaded', () =>{
             });
         }
         );
+    fetch('https://dog.ceo/api/breeds/list/all')
+        .then(resp => resp.json())
+        .then(json => {
+            console.log(json);
+            const dogBreedsList = document.getElementById('dog-breeds');
+
+            for (const key in json.message ){
+                const dogBreedListItem = document.createElement('li');
+
+                dogBreedListItem.innerHTML = key;
+
+                dogBreedsList.appendChild(dogBreedListItem);
+
+            };
+        })
 
        
 
